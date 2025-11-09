@@ -217,7 +217,7 @@ with col_input:
             features[fname1] = st.selectbox(label=clean_feature_name(fname1), options=options1, index=0, key=fname1)
             merged_list_1 = MERGE_MAP.get(fname1.upper(), [])
             if merged_list_1:
-                st.markdown(f"<b>Includes:</b> {', '.join(merged_list_1)}", unsafe_allow_html=True)
+                st.markdown(f"<b>Examples:</b> {', '.join(merged_list_1)}", unsafe_allow_html=True)
             st.markdown("<hr>", unsafe_allow_html=True)
 
         with c2:
