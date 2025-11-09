@@ -228,7 +228,7 @@ with col_input:
                 features[fname2] = st.selectbox(label=clean_feature_name(fname2), options=options2, index=0, key=fname2)
                 merged_list_2 = MERGE_MAP.get(fname2.upper(), [])
                 if merged_list_2:
-                    st.markdown(f"<b>Includes:</b> {', '.join(merged_list_2)}", unsafe_allow_html=True)
+                    st.markdown(f"<b>Examples:</b> {', '.join(merged_list_2)}", unsafe_allow_html=True)
                 st.markdown("<hr>", unsafe_allow_html=True)
 
 input_df = pd.DataFrame([features], columns=feature_names)
