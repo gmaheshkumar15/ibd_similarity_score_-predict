@@ -157,7 +157,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(
     """
     <p style='text-align:left; font-size:22px; color:black; line-height:1.75;'>
-    This tool uses a machine learning model to estimate the similarity of your diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. It uses Logistic Regression, Support Vector Classifier and Artificial Neural Network models to estimate prediction. The ML models were trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and controls without IBD.</p>
+    This tool uses a machine learning model to estimate the similarity of your diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. It uses Logistic Regression, Support Vector Classifier and Artificial Neural Network models to estimate prediction. The ML models were trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and controls without IBD.IBD patients were asked to report their dietary habits prior to diagnosis, and controls were asked to report current food habits.</p>
     """,
     unsafe_allow_html=True,
 )
@@ -217,7 +217,7 @@ with col_input:
             features[fname1] = st.selectbox(label=clean_feature_name(fname1), options=options1, index=0, key=fname1)
             merged_list_1 = MERGE_MAP.get(fname1.upper(), [])
             if merged_list_1:
-                st.markdown(f"<b>Includes:</b> {', '.join(merged_list_1)}", unsafe_allow_html=True)
+                st.markdown(f"<b>Examples:</b> {', '.join(merged_list_1)}", unsafe_allow_html=True)
             st.markdown("<hr>", unsafe_allow_html=True)
 
         with c2:
@@ -228,7 +228,7 @@ with col_input:
                 features[fname2] = st.selectbox(label=clean_feature_name(fname2), options=options2, index=0, key=fname2)
                 merged_list_2 = MERGE_MAP.get(fname2.upper(), [])
                 if merged_list_2:
-                    st.markdown(f"<b>Includes:</b> {', '.join(merged_list_2)}", unsafe_allow_html=True)
+                    st.markdown(f"<b>Examples:</b> {', '.join(merged_list_2)}", unsafe_allow_html=True)
                 st.markdown("<hr>", unsafe_allow_html=True)
 
 input_df = pd.DataFrame([features], columns=feature_names)
