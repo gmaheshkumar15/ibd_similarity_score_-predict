@@ -142,7 +142,7 @@ with col_logo_left:
     st.markdown('<div class="institute-name">Indian Institute of Technology Delhi</div>', unsafe_allow_html=True)
 with col_title:
     st.markdown(
-        "<h1 style='text-align:center; font-size:32px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
+        "<h1 style='text-align:center; font-size:28px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
         unsafe_allow_html=True,
     )
 with col_logo_right:
