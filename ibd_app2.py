@@ -123,7 +123,7 @@ st.markdown(
     hr { border: none; border-top: 3px solid #000000; margin: 0px 0; }
     .logo-left, .logo-right { width: 120px; display:block; margin:auto; }
     .institute-name { text-align:center; font-weight:bold; font-size:16px; margin-top:5px; }
-    .large-score { font-size: 38px !important; font-weight: bold; color: #8B0000; text-align: center; margin-top: 5px; margin-bottom: 5px; }
+    .large-score { font-size: 32px !important; font-weight: bold; color: #8B0000; text-align: center; margin-top: 5px; margin-bottom: 5px; }
     .pred-label { font-size: 18px; font-weight: 600; text-align: center; margin-bottom: 0; }
     </style>
     """,
@@ -142,7 +142,7 @@ with col_logo_left:
     st.markdown('<div class="institute-name">Indian Institute of Technology Delhi</div>', unsafe_allow_html=True)
 with col_title:
     st.markdown(
-        "<h1 style='text-align:center; font-size:14px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
+        "<h1 style='text-align:center; font-size:32px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
         unsafe_allow_html=True,
     )
 with col_logo_right:
