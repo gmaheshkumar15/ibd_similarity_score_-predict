@@ -142,7 +142,7 @@ with col_logo_left:
     st.markdown('<div class="institute-name">Indian Institute of Technology Delhi</div>', unsafe_allow_html=True)
 with col_title:
     st.markdown(
-        "<h1 style='text-align:center; font-size:36px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
+        "<h1 style='text-align:center; font-size:32px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
         unsafe_allow_html=True,
     )
 with col_logo_right:
@@ -156,7 +156,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 st.markdown(
     """
-    <p style='text-align:left; font-size:22px; color:black; line-height:1.75;'>
+    <p style='text-align:left; font-size:20px; color:black; line-height:1.75;'>
     This tool uses a machine learning model to estimate the similarity of your diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. It uses Logistic Regression, Support Vector Classifier and Artificial Neural Network models to estimate prediction. The ML models were trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and controls without IBD.IBD patients were asked to report their dietary habits prior to diagnosis, and controls were asked to report current food habits.</p>
     """,
     unsafe_allow_html=True,
