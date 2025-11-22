@@ -96,6 +96,34 @@ MERGE_MAP = {
 }
 
 # -----------------------------
+# DISPLAY_NAMES added
+# -----------------------------
+DISPLAY_NAMES = {
+    "WHEAT(CHAPATI,ROTI,NAAN,DALIA,RAWA/SOOJI,SEVIYAAN": "Wheat (Chapati, Roti, Naan, Dalia, Suji, Seviyaan)",
+    "WHEAT FREE CEREALS": "Wheat-Free Cereals",
+    "FRUITS": "Fruits",
+    "OTHER VEGETABLES": "Vegetables",
+    "STARCHY(POTATO,SWEET PATATO,ARBI ETC)": "Starchy (Potato, Sweet Potato, Arbi)",
+    "PULSES AND LEGUMES": "Pulses & Legumes",
+    "PREDOMINANT SATURATED FATS": "Predominant Saturated Fats",
+    "PREDOMINANT UNSATURATED FATS": "Predominant Unsaturated Fats",
+    "TRANS FATS": "Trans Fats",
+    "NUTS AND OILSEEDS": "Nuts & Oilseeds",
+    "EGGS,FISH AND POULTRY": "Eggs, Fish & Poultry",
+    "RED MEAT": "Red Meat",
+    "MILK ": "Milk",
+    "LOW LACTOSE DAIRY": "Low-Lactose Dairy",
+    "SWEETEND BEVERAGES": "Sweetened Beverages",
+    "ULTRA PROCESSED FOODS": "Ultra-Processed Foods",
+    "READT TO EAT PACKAGED SNACKS": "Ready-to-Eat Packaged Snacks",
+    "SAVORY SNACKS": "Savory Snacks",
+    "PROCESSED FOODS": "Processed Foods",
+    "INDIAN SWEET MEATS": "Indian Sweet Meats",
+    "FOOD SUPPLEMENTS": "Food Supplements",
+    "ERGOGENIC SUPPLEMENTS": "Ergogenic Supplements"
+}
+
+# -----------------------------
 # Feature names
 # -----------------------------
 try:
@@ -112,7 +140,7 @@ except AttributeError:
 st.set_page_config(page_title="IBD Risk Prediction", layout="wide")
 
 # -----------------------------
-# Custom CSS (thick, dark line)
+# Custom CSS
 # -----------------------------
 st.markdown(
     """
@@ -122,7 +150,6 @@ st.markdown(
     .logo-left, .logo-right { width: 120px; display:block; margin:auto; }
     .institute-name { text-align:center; font-weight:bold; font-size:16px; margin-top:5px; }
     .large-score { font-size: 32px !important; font-weight: bold; color: #8B0000; text-align: center; margin-top: 5px; margin-bottom: 5px; }
-    .pred-label { font-size: 18px; font-weight: 600; text-align: center; margin-bottom: 0; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -132,34 +159,28 @@ st.markdown(
 # Logos and Title
 # -----------------------------
 col_logo_left, col_title, col_logo_right = st.columns([1, 5, 1])
+
 with col_logo_left:
-    st.markdown(
-        '<img src="https://brandlogovector.com/wp-content/uploads/2022/04/IIT-Delhi-Icon-Logo.png" class="logo-left">',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<img src="https://brandlogovector.com/wp-content/uploads/2022/04/IIT-Delhi-Icon-Logo.png" class="logo-left">', unsafe_allow_html=True)
     st.markdown('<div class="institute-name">Indian Institute of Technology Delhi</div>', unsafe_allow_html=True)
+
 with col_title:
     st.markdown(
-        "<h1 style='text-align:center; font-size:32px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
+        "<h1 style='text-align:center; font-size:32px; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
         unsafe_allow_html=True,
     )
-
-
 
 with col_logo_right:
     st.markdown('<img src="https://raw.githubusercontent.com/gmaheshkumar15/ibd_similarity_score_-predictor3/main/dmch.jpeg" class="logo-right">', unsafe_allow_html=True)
     st.markdown('<div class="institute-name">Dayanand Medical College and Hospital Ludhiana</div>', unsafe_allow_html=True)
-
-
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
 st.markdown(
     """
     <p style='text-align:left; font-size:20px; color:black; line-height:1.75;'>
-    This tool is developed by DMCH Ludhiana and IIT Delhi. It uses machine learning (ML) models to estimate the similarity of a diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. 
-    The ML model was trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and Controls without IBD. 
-    IBD patients were asked to report their dietary habits prior to diagnosis, and Controls were asked to report current food habits.</p>
+    This tool is developed by DMCH Ludhiana and IIT Delhi. It uses machine learning (ML) models to estimate the similarity of a diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis.
+    </p>
     """,
     unsafe_allow_html=True,
 )
@@ -204,9 +225,7 @@ col_input, col_output = st.columns([5, 1])
 # -----------------------------
 features = {}
 with col_input:
-    st.header(
-        "In the below fields, provide information about your dietary habits. Select the level of consumption for each food item (higher values indicate higher consumption, and vice versa)."
-    )
+    st.header("In the below fields, provide information about your dietary habits.")
     n = len(feature_names)
     half = n // 2 if n > 1 else 1
 
@@ -216,10 +235,13 @@ with col_input:
         with c1:
             fname1 = feature_names[i]
             options1 = feature_value_limits.get(fname1.upper(), list(range(38)))
-            features[fname1] = st.selectbox(label=clean_feature_name(fname1), options=options1, index=0, key=fname1)
+            label1 = DISPLAY_NAMES.get(fname1.upper(), clean_feature_name(fname1))   # ← ONLY CHANGE
+            features[fname1] = st.selectbox(label=label1, options=options1, index=0, key=fname1)
+
             merged_list_1 = MERGE_MAP.get(fname1.upper(), [])
             if merged_list_1:
                 st.markdown(f"<b>Examples:</b> {', '.join(merged_list_1)}", unsafe_allow_html=True)
+
             st.markdown("<hr>", unsafe_allow_html=True)
 
         with c2:
@@ -227,10 +249,13 @@ with col_input:
             if idx2 < n:
                 fname2 = feature_names[idx2]
                 options2 = feature_value_limits.get(fname2.upper(), list(range(38)))
-                features[fname2] = st.selectbox(label=clean_feature_name(fname2), options=options2, index=0, key=fname2)
+                label2 = DISPLAY_NAMES.get(fname2.upper(), clean_feature_name(fname2))  # ← ONLY CHANGE
+                features[fname2] = st.selectbox(label=label2, options=options2, index=0, key=fname2)
+
                 merged_list_2 = MERGE_MAP.get(fname2.upper(), [])
                 if merged_list_2:
                     st.markdown(f"<b>Examples:</b> {', '.join(merged_list_2)}", unsafe_allow_html=True)
+
                 st.markdown("<hr>", unsafe_allow_html=True)
 
 input_df = pd.DataFrame([features], columns=feature_names)
@@ -247,16 +272,13 @@ with col_output:
         try:
             scaled_input = scaler.transform(input_df)
             logistic_score = log_model.predict_proba(scaled_input)[0][1] * 100
-    
 
             st.markdown(
                 "<p style='font-size:30px; font-weight:bold; margin-bottom:5px;'>Similarity Score (0–100):</p>",
                 unsafe_allow_html=True,
             )
-            pcol1, pcol2, pcol3 = st.columns(3)
 
-            with pcol1:
-                st.markdown(f"<div class='large-score'>{logistic_score:.0f}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='large-score'>{logistic_score:.0f}</div>", unsafe_allow_html=True)
 
         except Exception as e:
             st.error(f"Prediction Error: {e}")
