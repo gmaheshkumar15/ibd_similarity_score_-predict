@@ -250,7 +250,7 @@ with col_output:
     
 
             st.markdown(
-                "<p style='font-size:18px; font-weight:bold; margin-bottom:5px;'>Similarity Scores (0–100):</p>",
+                "<p style='font-size:20px; font-weight:bold; margin-bottom:5px;'>Similarity Score (0–100):</p>",
                 unsafe_allow_html=True,
             )
             pcol1, pcol2, pcol3 = st.columns(3)
