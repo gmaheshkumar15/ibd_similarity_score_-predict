@@ -179,7 +179,8 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(
     """
     <p style='text-align:left; font-size:20px; color:black; line-height:1.75;'>
-    This tool is developed by DMCH Ludhiana and IIT Delhi. It uses machine learning (ML) models to estimate the similarity of a diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis.
+    This tool is developed by DMCH Ludhiana and IIT Delhi. It uses machine learning (ML) models to estimate the similarity of a diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. 
+    The ML model was trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and Controls without IBD. IBD patients were asked to report their dietary habits prior to diagnosis, and Controls were asked to report current food habits.
     </p>
     """,
     unsafe_allow_html=True,
@@ -225,7 +226,7 @@ col_input, col_output = st.columns([5, 1])
 # -----------------------------
 features = {}
 with col_input:
-    st.header("In the below fields, provide information about your dietary habits.")
+    st.header("In the below fields, provide information about your dietary habits. Select the level of consumption for each food item (higher values indicate higher consumption, and vice versa).")
     n = len(feature_names)
     half = n // 2 if n > 1 else 1
 
