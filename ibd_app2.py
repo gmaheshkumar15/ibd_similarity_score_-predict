@@ -8,8 +8,6 @@ from tensorflow.keras.models import load_model
 # -----------------------------
 try:
     log_model = joblib.load("logistic_final.pkl")
-    svc_model = joblib.load("svc_final.pkl")
-    ann_model = load_model("ann_final.h5", compile=False)
     scaler = joblib.load("scaler_final.pkl")
 except FileNotFoundError as e:
     st.error(f"Error: Missing model file - {e}")
@@ -159,7 +157,9 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(
     """
     <p style='text-align:left; font-size:20px; color:black; line-height:1.75;'>
-    This tool uses a machine learning model to estimate the similarity of your diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. It uses Logistic Regression, Support Vector Classifier and Artificial Neural Network models to estimate prediction. The ML models were trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and controls without IBD.IBD patients were asked to report their dietary habits prior to diagnosis, and controls were asked to report current food habits.</p>
+    This tool is developed by DMCH Ludhiana and IIT Delhi. It uses machine learning (ML) models to estimate the similarity of a diet with those consumed by patients prior to an Inflammatory Bowel Disease (IBD) diagnosis. 
+    The ML model was trained based on data from a dietary survey conducted by DMCH Ludhiana among IBD patients and Controls without IBD. 
+    IBD patients were asked to report their dietary habits prior to diagnosis, and Controls were asked to report current food habits.</p>
     """,
     unsafe_allow_html=True,
 )
@@ -247,8 +247,7 @@ with col_output:
         try:
             scaled_input = scaler.transform(input_df)
             logistic_score = log_model.predict_proba(scaled_input)[0][1] * 100
-            svc_score = svc_model.predict_proba(scaled_input)[0][1] * 100
-            ann_score = float(ann_model.predict(scaled_input)[0][0]) * 100
+    
 
             st.markdown(
                 "<p style='font-size:18px; font-weight:bold; margin-bottom:5px;'>Similarity Scores (0–100):</p>",
@@ -259,12 +258,6 @@ with col_output:
             with pcol1:
                 st.markdown("<p class='pred-label'>Logistic</p>", unsafe_allow_html=True)
                 st.markdown(f"<div class='large-score'>{logistic_score:.0f}</div>", unsafe_allow_html=True)
-            with pcol2:
-                st.markdown("<p class='pred-label'>SVC</p>", unsafe_allow_html=True)
-                st.markdown(f"<div class='large-score'>{svc_score:.0f}</div>", unsafe_allow_html=True)
-            with pcol3:
-                st.markdown("<p class='pred-label'>ANN</p>", unsafe_allow_html=True)
-                st.markdown(f"<div class='large-score'>{ann_score:.0f}</div>", unsafe_allow_html=True)
 
         except Exception as e:
             st.error(f"Prediction Error: {e}")
