@@ -145,12 +145,15 @@ with col_title:
         "<h1 style='text-align:center; font-size:32px:line-height:2; color:black;'>DMCH-IITD Machine Learning Tool for Estimating the Diet Percentage Similarity with Respect to Diets Consumed by Inflammatory Bowel Disease Patients Prior to Diagnosis</h1>",
         unsafe_allow_html=True,
     )
-with col_logo_right:
-    st.markdown(
-        '<img src="https://tse2.mm.bing.net/th/id/OIP.fNb1hJAUj-8vwANfP3SDJgAAAA?pid=Api&P=0&h=180" class="logo-right">',
-        unsafe_allow_html=True,
-    )
+
     st.markdown('<div class="institute-name">Dayanand Medical College and Hospital Ludhiana</div>', unsafe_allow_html=True)
+
+
+
+
+
+
+
 
 st.markdown("<hr>", unsafe_allow_html=True)
 
