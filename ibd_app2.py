@@ -256,7 +256,6 @@ with col_output:
             pcol1, pcol2, pcol3 = st.columns(3)
 
             with pcol1:
-                st.markdown("<p class='pred-label'>Logistic</p>", unsafe_allow_html=True)
                 st.markdown(f"<div class='large-score'>{logistic_score:.0f}</div>", unsafe_allow_html=True)
 
         except Exception as e:
