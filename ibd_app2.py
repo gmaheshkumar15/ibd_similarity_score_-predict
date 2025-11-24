@@ -7,8 +7,8 @@ from tensorflow.keras.models import load_model
 # Load trained models safely
 # -----------------------------
 try:
-    log_model = joblib.load("logistic_final.pkl")
-    scaler = joblib.load("scaler_final.pkl")
+    log_model = joblib.load("logistic_model_only.pkl")
+    scaler = joblib.load("scaler_final1.pkl")
 except FileNotFoundError as e:
     st.error(f"Error: Missing model file - {e}")
     st.stop()
