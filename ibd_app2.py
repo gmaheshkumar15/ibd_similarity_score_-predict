@@ -161,7 +161,7 @@ st.markdown(
 col_logo_left, col_title, col_logo_right = st.columns([1, 5, 1])
 
 with col_logo_left:
-    st.markdown('<img src="https://brandlogovector.com/wp-content/uploads/2022/04/IIT-Delhi-Icon-Logo.png" class="logo-left">', unsafe_allow_html=True)
+    st.markdown('<img src="https://raw.githubusercontent.com/gmaheshkumar15/ibd_similarity_score_-predictor3/main/iitd.png" class="logo-right">', unsafe_allow_html=True)
     st.markdown('<div class="institute-name">Indian Institute of Technology Delhi</div>', unsafe_allow_html=True)
 
 with col_title:
